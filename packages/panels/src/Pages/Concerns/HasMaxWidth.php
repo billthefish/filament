@@ -6,7 +6,7 @@ use Filament\Support\Enums\MaxWidth;
 
 trait HasMaxWidth
 {
-    protected ?string $maxWidth = null;
+    protected MaxWidth | string | null $maxWidth = null;
 
     public function getMaxWidth(): MaxWidth | string | null
     {
