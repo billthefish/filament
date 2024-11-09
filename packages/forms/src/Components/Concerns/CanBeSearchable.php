@@ -21,6 +21,8 @@ trait CanBeSearchable
 
     protected bool | Closure $shouldSearchValues = false;
 
+    protected array | Closure $searchOptions = [];
+
     public function searchable(bool | Closure $condition = true): static
     {
         $this->isSearchable = $condition;
@@ -70,6 +72,13 @@ trait CanBeSearchable
         return $this;
     }
 
+    public function searchOptions(array | Closure $searchOptions): static
+    {
+        $this->searchOptions = $searchOptions;
+
+        return $this;
+    }
+
     public function getNoSearchResultsMessage(): string | Htmlable
     {
         return $this->evaluate($this->noSearchResultsMessage) ?? __('filament-forms::components.select.no_search_results_message');
@@ -111,8 +120,14 @@ trait CanBeSearchable
         return $this->evaluate($this->searchingMessage) ?? __('filament-forms::components.select.searching_message');
     }
 
+    public function getSearchOptions(): array
+    {
+        return $this->evaluate($this->searchOptions);
+    }
+
     public function isSearchable(): bool
     {
         return (bool) $this->evaluate($this->isSearchable);
     }
+
 }

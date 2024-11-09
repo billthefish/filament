@@ -60,6 +60,7 @@ export default function selectFormComponent({
                 searchFields: searchableOptionFields ?? ['label'],
                 searchPlaceholderValue: searchPrompt,
                 searchResultLimit: optionsLimit,
+                fuseOptions: searchOptions ?? {},
                 shouldSort: false,
                 searchFloor: hasDynamicSearchResults ? 0 : 1,
             })
